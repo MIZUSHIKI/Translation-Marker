@@ -1,0 +1,32 @@
+{
+  "extName": {
+    "message": "Translation Marker"
+  },
+  "extDescription": {
+    "message": "Draw a line on the translated text with a marker. You can easily find the translated location."
+  },
+  "options": {
+    "message": "settings"
+  },
+  "markerWidth": {
+    "message": "Marker width : "
+  },
+  "markerColor": {
+    "message": "Marker color : "
+  },
+  "advancedSettings": {
+    "message": "Advanced settings"
+  },
+  "onlySites": {
+    "message": "Applies only to specified sites"
+  },
+  "translatedLocation": {
+    "message": "Where to draw the marker(css)："
+  },
+  "save": {
+    "message": "Save"
+  },
+  "default": {
+    "message": "Return To Default Values"
+  }
+}

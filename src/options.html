@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+<style>
+details[open] {
+  background: #f6f6ff;
+}
+</style>
+</head>
+<body>
+<h2 id="h2_option">設定 - Translation Marker</h2>
+<div>
+<div>
+<label for="height" id="label_markerWidth">マーカーの幅：</label>
+<input type="textbox" id="input_height" name="height" size="5">
+<label for="height">%</label>
+</div>
+<div>
+<label for="marker" id="label_markerColor">マーカーの色：</label>
+<input type="color" id="input_color" name="marker" value="#ffff60">
+<label id="marker_color_label" for="marker">#ffff60</label>
+</div>
+<br>
+<details>
+  <summary id="summary_advancedSettings">
+    高度な設定
+  </summary>
+<br>
+<div id="switchArea">
+  <input type="checkbox" name="onlyCheck" id="onlyCheck">
+  <label for="onlyCheck" id="label_onlySites">特定のサイトのみに適用する</label>
+  <br>
+  <textarea id="input_onlySites" name="input_onlySites" cols="60" rows="6" placeholder="https://www.youtube.com/*
+https://twitter.com/*"></textarea>
+</div>
+<br>
+<div>
+<label for="height" id="label_translatedLocation">マーカーを引く箇所(css)：</label>
+<input type="textbox" id="input_where" name="where" size="60">
+</div>
+<br>
+</details>
+<br>
+<button id="save_button">保存</button>
+<button id="default_button">デフォルトに戻す</button>
+</div>
+ 
+<script src="options_script.js"></script>
+
+</body>
+</html>

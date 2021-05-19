@@ -1,0 +1,13 @@
+{
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDescription__",
+  "version": "1.0",
+  "manifest_version": 2,
+  "content_scripts": [{
+    "matches": [ "http://*/*", "https://*/*"],
+    "js": ["content_script.js"]
+  }],
+  "options_page": "options.html",
+  "permissions": ["storage"],
+  "default_locale": "en"
+}
