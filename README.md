@@ -1,6 +1,10 @@
 # Translation-Marker
 Chrome Extension
 
+https://chrome.google.com/webstore/detail/translation-marker/laajolgfglglpbhbechfojmmgmgcpled/
+
+<br>
+
 Highlight the translated text with a marker.
 ----------------------------------------------------------------------------
 Highlight the translated text when you right-click on the web page and choose “Translate to English”.
