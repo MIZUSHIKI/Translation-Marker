@@ -1,5 +1,5 @@
 ﻿function Save() {
-  var height = document.getElementById('input_height').value;
+  var height = PerInv(document.getElementById('input_height').value);
   var color  = document.getElementById('input_color').value;
   var where  = document.getElementById('input_where').value;
   var onlyCheck = document.getElementById('onlyCheck').checked;
@@ -20,7 +20,7 @@ function Load() {
   							onlyCheck : false,
   							onlySites : 'https://www.youtube.com/*\nhttps://twitter.com/*'
   							}, function (items) {
-    document.getElementById('input_height').value = items.height;
+    document.getElementById('input_height').value = PerInv(items.height);
     document.getElementById('input_color').value = items.color;
     document.getElementById('marker_color_label').textContent = items.color;
     document.getElementById('input_where').value = items.where;
@@ -70,6 +70,15 @@ function Location(){
     document.getElementById('label_translatedLocation').textContent = chrome.i18n.getMessage("translatedLocation");
     document.getElementById('save_button').textContent = chrome.i18n.getMessage("save");
     document.getElementById('default_button').textContent = chrome.i18n.getMessage("default");
+}
+function PerInv(value){
+	if(value<0){
+		return 100;
+	}
+	if(value>100){
+		return 0;
+	}
+	return (100 - value);
 }
 
 document.addEventListener('DOMContentLoaded', DOMed);

@@ -3,7 +3,7 @@
     "message": "Translation Marker"
   },
   "extDescription": {
-    "message": "Draw a line on the translated text with a marker. You can easily find the translated location."
+    "message": "Highlight the translated text with a marker."
   },
   "options": {
     "message": "settings"
