@@ -26,10 +26,10 @@ function init() {
 function setMarkerStyle(){
 	const style = document.createElement('style');
 	chrome.storage.sync.get({	height:60,
-								color:'#ffff60',
+								colorRGBA:'#ffff0066',
 								where:'font[style="vertical-align: inherit;"]'
 								}, function (items) {
-	style.innerHTML = `${items.where}{background:linear-gradient(transparent ${items.height}%, ${items.color} ${items.height}%);}`;
+	style.innerHTML = `${items.where}{background:linear-gradient(transparent ${items.height}%, ${items.colorRGBA} ${items.height}%);}`;
 		document.body.appendChild(style);
 	});
 }

@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
-<style>
-details[open] {
-  background: #f6f6ff;
-}
-</style>
+  <script src="jquery-3.7.1.min.js"></script>
+  <script src="jquery.minicolors.min.js"></script>
+  <link rel="stylesheet" href="jquery.minicolors.css">
+  <style>
+    details[open] {
+      background: #f6f6ff;
+    }
+  </style>
 </head>
-<body>
-<h2 id="h2_option">設定 - Translation Marker</h2>
-<div>
-<div>
-<label for="height" id="label_markerWidth">マーカーの幅：</label>
-<input type="textbox" id="input_height" name="height" size="5">
-<label for="height">%</label>
-</div>
-<div>
-<label for="marker" id="label_markerColor">マーカーの色：</label>
-<input type="color" id="input_color" name="marker" value="#ffff60">
-<label id="marker_color_label" for="marker">#ffff60</label>
-</div>
-<br>
-<details>
-  <summary id="summary_advancedSettings">
-    高度な設定
-  </summary>
-<br>
-<div id="switchArea">
-  <input type="checkbox" name="onlyCheck" id="onlyCheck">
-  <label for="onlyCheck" id="label_onlySites">特定のサイトのみに適用する</label>
-  <br>
-  <textarea id="input_onlySites" name="input_onlySites" cols="60" rows="6" placeholder="https://www.youtube.com/*
-https://twitter.com/*"></textarea>
-</div>
-<br>
-<div>
-<label for="height" id="label_translatedLocation">マーカーを引く箇所(css)：</label>
-<input type="textbox" id="input_where" name="where" size="60">
-</div>
-<br>
-</details>
-<br>
-<button id="save_button">保存</button>
-<button id="default_button">デフォルトに戻す</button>
-</div>
- 
-<script src="options_script.js"></script>
 
+<body>
+  <h2 id="h2_option">設定 - Translation Marker</h2>
+  <div>
+    <div>
+      <label for="height" id="label_markerWidth">マーカーの幅：</label>
+      <input type="textbox" id="input_height" name="height" size="5">
+      <label for="height">%</label>
+    </div>
+    <div>
+      <label for="marker" id="label_markerColor">マーカーの色：</label>
+      <span class="form-group">
+        <input type="text" id="input_color" class="demo" data-format="rgb" data-opacity=".5" value="">
+      </span>
+    </div>
+    <br>
+    <details>
+      <summary id="summary_advancedSettings" style="width: fit-content; cursor: pointer;">
+        高度な設定
+      </summary>
+      <br>
+      <div id="switchArea">
+        <input type="checkbox" name="onlyCheck" id="onlyCheck">
+        <label for="onlyCheck" id="label_onlySites">特定のサイトのみに適用する</label>
+        <br>
+        <textarea id="input_onlySites" name="input_onlySites" cols="60" rows="6" placeholder="https://www.youtube.com/*
+https://twitter.com/*"></textarea>
+      </div>
+      <br>
+      <div>
+        <label for="height" id="label_translatedLocation">マーカーを引く箇所(css)：</label>
+        <input type="textbox" id="input_where" name="where" size="60">
+      </div>
+      <br>
+    </details>
+    <br>
+    <button id="save_button">保存</button>
+    <button id="default_button">デフォルトに戻す</button>
+  </div>
+
+  <script src="options_script.js"></script>
+  <br><br>
+  <div style="font-size: x-small;">
+    Libraries used<br>
+    - jQuery <a href="https://jquery.com/">(https://jquery.com/)</a> [MIT License] , Copyright OpenJS Foundation and
+    other contributors, https://openjsf.org/<br>
+    - jQuery MiniColors <a
+      href="https://github.com/claviska/jquery-minicolors/tree/master">(https://github.com/claviska/jquery-minicolors/tree/master)</a>
+    [MIT License] , Copyright 2017 A Beautiful Site, LLC
+  </div>
 </body>
+
 </html>

@@ -1,12 +1,14 @@
 ﻿function Save() {
   var height = PerInv(document.getElementById('input_height').value);
-  var color  = document.getElementById('input_color').value;
+  var color  = '#ffff60';
+  var colorRGBA = rgbaToHex(document.getElementById('input_color').value);
   var where  = document.getElementById('input_where').value;
   var onlyCheck = document.getElementById('onlyCheck').checked;
   var onlySites  = document.getElementById('input_onlySites').value;
 
   chrome.storage.sync.set({	'height': height,
   							'color': color,
+  							'colorRGBA': colorRGBA,
   							'where': where,
   							'onlyCheck' : onlyCheck,
   							'onlySites' : onlySites
@@ -16,13 +18,22 @@
 function Load() {
   chrome.storage.sync.get({	height:60,
   							color:'#ffff60',
+                colorRGBA:'',
   							where:'font[style="vertical-align: inherit;"]',
   							onlyCheck : false,
   							onlySites : 'https://www.youtube.com/*\nhttps://twitter.com/*'
   							}, function (items) {
+    if(items.colorRGBA == ''){
+      if(items.color == '#ffff60'){
+        items.colorRGBA = '#ffff0066';
+      }else {
+        items.colorRGBA = items.color + 'ff';
+      }
+    }
     document.getElementById('input_height').value = PerInv(items.height);
-    document.getElementById('input_color').value = items.color;
-    document.getElementById('marker_color_label').textContent = items.color;
+    $('#input_color').minicolors();
+    $('#input_color').minicolors('value',hexToRgba(items.colorRGBA));
+    //document.getElementById('input_color').value = hexToRgba(items.colorRGBA);
     document.getElementById('input_where').value = items.where;
     document.getElementById('onlyCheck').checked = items.onlyCheck;
     document.getElementById('input_onlySites').value = items.onlySites;
@@ -33,6 +44,7 @@ function Load() {
 function Default() {
   chrome.storage.sync.set({	'height': 60,
   							'color': '#ffff60',
+  							'colorRGBA': '#ffff0066',
   							'where':'font[style="vertical-align: inherit;"]',
   							'onlyCheck' : false
   							 }, function () {
@@ -41,10 +53,6 @@ function Default() {
 }
 
 function DOMed() {
-  //addEventListener
-  document.getElementById('input_color').addEventListener('change', function(){
-    document.getElementById('marker_color_label').textContent = this.value;
-  });
   document.getElementById('onlyCheck').addEventListener('click', function(){
   	visible_onlySites( this.checked );
   });
@@ -81,4 +89,65 @@ function PerInv(value){
 	return (100 - value);
 }
 
+function rgbaToHex(rgbaText) {
+  let rgba = rgbaText.match(/\d+(\.\d+)?/g);
+  rgba[3] = `${parseInt(parseFloat(rgba[3]) * 255)}`;
+  let hex = rgba.map(x => {
+    x = Math.floor(x);
+    x = x.toString(16);
+    x = x.padStart(2, '0');
+    return x;
+  });
+  let hexText = '#' + hex.join('');
+  return hexText;
+}
+function hexToRgba(hexText) {
+  let hex = hexText.match(/[0-9a-fA-F]{2}/g);
+  let rgba = hex.map(x => {
+    x = parseInt(x, 16);
+    return x;
+  });
+  rgba[3] = (Math.round(rgba[3] / 255 * 100) / 100);
+  let rgbaText = 'rgba(' + rgba.join(', ') + ')';
+  return rgbaText;
+}
+
 document.addEventListener('DOMContentLoaded', DOMed);
+
+
+$(document).ready(function () {
+
+  $('.demo').each(function () {
+    //
+    // Dear reader, it's actually very easy to initialize MiniColors. For example:
+    //
+    //  $(selector).minicolors();
+    //
+    // The way I've done it below is just for the demo, so don't get confused
+    // by it. Also, data- attributes aren't supported at this time. Again,
+    // they're only used for the purposes of this demo.
+    //
+    $(this).minicolors({
+      control: $(this).attr('data-control') || 'hue',
+      defaultValue: $(this).attr('data-defaultValue') || '',
+      format: $(this).attr('data-format') || 'hex',
+      keywords: $(this).attr('data-keywords') || '',
+      inline: $(this).attr('data-inline') === 'true',
+      letterCase: $(this).attr('data-letterCase') || 'lowercase',
+      opacity: $(this).attr('data-opacity'),
+      position: $(this).attr('data-position') || 'bottom',
+      swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
+      change: function (hex, opacity) {
+        var log;
+        try {
+          log = hex ? hex : 'transparent';
+          if (opacity) log += ', ' + opacity;
+          console.log(log);
+        } catch (e) { }
+      },
+      theme: 'default'
+    });
+
+  });
+
+});
