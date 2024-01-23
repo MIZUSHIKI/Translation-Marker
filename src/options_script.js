@@ -21,7 +21,7 @@ function Load() {
                 colorRGBA:'',
   							where:'font[style="vertical-align: inherit;"]',
   							onlyCheck : false,
-  							onlySites : 'https://www.youtube.com/*\nhttps://twitter.com/*'
+  							onlySites : 'https://www.youtube.com*\nhttps://twitter.com*'
   							}, function (items) {
     if(items.colorRGBA == ''){
       if(items.color == '#ffff60'){
